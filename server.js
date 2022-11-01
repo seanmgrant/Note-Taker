@@ -6,7 +6,7 @@ const path = require('path');
 
 const PORT = process.env.port || 3001;
 
-const api = require('./routes/index');
+const api = require('./routes/index.js');
 
 //Set up Express app for data parsing
 app.use(express.json());
@@ -17,7 +17,7 @@ app.use(express.static('public'));
 
 //GET Route for homepage
 app.get('/notes', (req, res) => -
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 app.get('*', (req, res) => {

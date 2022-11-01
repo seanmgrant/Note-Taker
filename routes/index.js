@@ -1,12 +1,11 @@
 const express = require('express');
-
 // Import our modular routers for  notes
-const notes = require('./notesRouter');
+const notesR = require('./notes');
 
 
 const app = express();
 
-app.use('/notesRouter', notes);
+app.use('/notes', notesR);
 
 
 module.exports = app;
