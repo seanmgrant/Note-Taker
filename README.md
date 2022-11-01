@@ -2,7 +2,7 @@
 
 
 ## Description
- This is an app to take notes it lets you save and delete.
+ This is an app that lets you save your notes.
 
 
 
