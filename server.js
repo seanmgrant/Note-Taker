@@ -3,13 +3,14 @@ const express = require('express');
 const notes = require('./db/db.json');
 const app = express();
 const path = require('path');
-const api = require('./routers/index.js');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.port || 3001;
+
+const api = require('./routes/index');
 
 //Set up Express app for data parsing
 app.use(express.json());
-app.use(express.urlencoded({ extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
 
 app.use(express.static('public'));
