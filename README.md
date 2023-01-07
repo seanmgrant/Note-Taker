@@ -3,14 +3,14 @@
 
 ## Deployed App
 
-https://cryptic-harbor-45795.herokuapp.com/notes
+https://warm-waters-44299.herokuapp.com/
   
   
   
   
 
 ## Description
- This is an app that lets you save your notes.
+The Note Taker application allows users to create and save notes. It utilizes an Express.js server to manage the back-end operations and stores the note data in a JSON file.
 
 
 
