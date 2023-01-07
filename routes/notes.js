@@ -1,18 +1,18 @@
-const note = require('express').Router();
-// const path = require("path");
+const notes = require('express').Router();
+const fs = require('fs');
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
-// const fs = require("fs");
+
 
 
 // GET Route for retrieving all the tips
-note.get('/', (req, res) => {
+notes.get('/', (req, res) => {
     console.info(`${req.method} request recevied for note`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
 //POST Route for submitting feedback
-note.post('/', (req, res) => {
+notes.post('/', (req, res) => {
     // Log that a POST request was received
     console.info(`${req.method} request received to submit note`)
     console.log(req.body);
@@ -24,7 +24,7 @@ note.post('/', (req, res) => {
     const newNote = {
         title,
         text,
-        note_id: uuid(),
+        id: uuid(),
     };
   
     readAndAppend(newNote, './db/db.json');
@@ -32,7 +32,21 @@ note.post('/', (req, res) => {
     } else {
     res.error('Error in adding note');
     }
-});  
+});
+  // DELETE Route 
+notes.delete('/notes/:id', (req, res) => {
+    let notesList = JSON.parse(data);
+    for (let i = 0; i < notesList.length; i++) {
+        if (notesList[i].id === req.params.id) {
+            notes.splice(i, 1);
+        }}
 
+    fs.writeFileSync('db/db.json', JSON.stringify(data), (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Note was deleted');
+        }
+    })});
 
-module.exports = note;
+module.exports = notes;
